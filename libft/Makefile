@@ -6,7 +6,7 @@
 #    By: acollon <acollon@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/13 14:39:44 by acollon           #+#    #+#              #
-#    Updated: 2025/04/28 10:32:12 by acollon          ###   ########.fr        #
+#    Updated: 2025/07/14 13:39:05 by acollon          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,7 +44,8 @@ SRC		=	ft_isalpha.c \
 			ft_putchar_fd.c \
 			ft_putstr_fd.c \
 			ft_putnbr_fd.c \
-			ft_putendl_fd.c
+			ft_putendl_fd.c \
+			ft_atol.c
 
 BONUS	=	ft_lstnew_bonus.c \
 			ft_lstadd_front_bonus.c \
@@ -59,7 +60,7 @@ BONUS	=	ft_lstnew_bonus.c \
 OBJ = $(SRC:.c=.o)
 OBJ_BONUS = $(BONUS:.c=.o)
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror -I ../includes
+CFLAGS = -Wall -Wextra -Werror
 RM = rm -f
 
 all: $(NAME)

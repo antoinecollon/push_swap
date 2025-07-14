@@ -44,12 +44,12 @@ int	has_duplicates(t_stack *stack)
 		while (check)
 		{
 			if (nb->value == check->value)
-				return (1);
+				return (0);
 			check = check->next;
 		}
 		nb = nb->next;
 	}
-	return (0);
+	return (1);
 }
 
 void	free_stack(t_stack **stack)

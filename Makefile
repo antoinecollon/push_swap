@@ -6,7 +6,7 @@
 #    By: acollon <acollon@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/09 17:45:35 by acollon           #+#    #+#              #
-#    Updated: 2025/05/10 11:08:06 by acollon          ###   ########.fr        #
+#    Updated: 2025/07/14 14:14:07 by acollon          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,7 @@ SRCS	= \
 
 OBJS	= $(SRCS:.c=.o)
 CC	= cc
-CFLAGS	= -Wall -Wextra -Werror -I$(INC_DIR) -I$(LIBFT_DIR)
+CFLAGS	= -Wall -Wextra -Werror -I$(INC_DIR) -I$(LIBFT_DIR) -g
 LIBFT	= $(LIBFT_DIR)/libft.a
 
 all: $(NAME)
