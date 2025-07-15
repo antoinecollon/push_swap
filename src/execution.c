@@ -6,7 +6,7 @@
 /*   By: acollon <acollon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/09 16:46:06 by acollon           #+#    #+#             */
-/*   Updated: 2025/05/09 18:24:47 by acollon          ###   ########.fr       */
+/*   Updated: 2025/07/15 12:04:59 by acollon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ static int	get_min_pos(t_stack *a)
 	}
 	return (0);
 }
+
 void	rotate_stack_to_min_top(t_stack **a)
 {
 	int	min_pos;
@@ -41,7 +42,7 @@ void	rotate_stack_to_min_top(t_stack **a)
 		{
 			stack_rotate(a, 'a');
 		}
-	}	
+	}
 	else
 	{
 		i = size - min_pos;
@@ -49,10 +50,30 @@ void	rotate_stack_to_min_top(t_stack **a)
 			stack_reverse_rotate(a, 'a');		
 	}
 }
+
 void	push_to_b(t_stack **a, t_stack **b)
 {
+	int	i;
+	int	chunk_size;
+
+	i = 0;
+	chunk_size = 30;
 	while (stack_size(*a) > 3)
-		stack_push(b, a, 'b');
+	{
+		if ((*a)->index <= i)
+		{
+			stack_push(b, a, 'b');
+			i++;
+		}
+		else if ((*a)->index <= i + chunk_size)
+		{
+			stack_push(b, a, 'b');
+			stack_rotate(b, 'b');
+			i++;
+		}
+		else
+			stack_rotate(a, 'a');
+	}
 }
 
 void	sort_big(t_stack **a, t_stack **b)
