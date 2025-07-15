@@ -6,7 +6,7 @@
 /*   By: acollon <acollon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/28 10:23:38 by acollon           #+#    #+#             */
-/*   Updated: 2025/05/09 18:09:42 by acollon          ###   ########.fr       */
+/*   Updated: 2025/07/15 17:08:28 by acollon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 # define PUSH_SWAP_H
 
 # include "../libft/libft.h"
-# include "ft_printf.h"
+# include "../ft_printf/ft_printf.h"
+# include "../gnl/get_next_line.h"
 # include <stdlib.h>
 # include <limits.h>
 # include <unistd.h>
@@ -95,5 +96,7 @@ void	free_split(char **split);
 void	free_all(t_stack **a, t_stack **b);
 void	safe_free(void *ptr);
 void	print_error_and_exit(void);
+
+//BONUS
 
 #endif
