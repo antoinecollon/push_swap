@@ -6,7 +6,7 @@
 /*   By: acollon <acollon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/15 17:05:46 by acollon           #+#    #+#             */
-/*   Updated: 2025/07/16 20:00:14 by acollon          ###   ########.fr       */
+/*   Updated: 2025/07/16 20:52:49 by acollon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,8 +77,8 @@ int	main(int ac, char **av)
 	t_stack	*b;
 	char	*line;
 
-	a = parse_args(ac, av);
 	check_args(ac, av);
+	a = parse_args(ac, av);
 	b = NULL;
 	line = get_next_line(0);
 	while (line)
