@@ -6,7 +6,7 @@
 /*   By: acollon <acollon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/28 12:55:30 by acollon           #+#    #+#             */
-/*   Updated: 2025/07/15 12:02:17 by acollon          ###   ########.fr       */
+/*   Updated: 2025/07/15 23:21:03 by acollon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ t_stack	*parse_args(int ac, char **av)
 	char			**split;
 	t_stack			*stack;
 	int				i;
-	
+
 	i = 1;
 	stack = NULL;
 	if (ac < 2)
@@ -40,7 +40,6 @@ void	parse_split(t_stack **stack, char **split)
 	long	check_max;
 
 	j = 0;
-	check_max = ft_atol(split[j]);
 	while (split[j])
 	{
 		if (!is_valid_number(split[j]))
@@ -48,6 +47,7 @@ void	parse_split(t_stack **stack, char **split)
 			free_split(split);
 			print_error_and_exit();
 		}
+		check_max = ft_atol(split[j]);
 		if (check_max < INT_MIN || check_max > INT_MAX)
 		{
 			free_split(split);

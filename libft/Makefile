@@ -6,7 +6,7 @@
 #    By: acollon <acollon@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/13 14:39:44 by acollon           #+#    #+#              #
-#    Updated: 2025/07/14 13:39:05 by acollon          ###   ########.fr        #
+#    Updated: 2025/07/16 19:01:35 by acollon          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,7 +45,8 @@ SRC		=	ft_isalpha.c \
 			ft_putstr_fd.c \
 			ft_putnbr_fd.c \
 			ft_putendl_fd.c \
-			ft_atol.c
+			ft_atol.c \
+			ft_strcmp.c 
 
 BONUS	=	ft_lstnew_bonus.c \
 			ft_lstadd_front_bonus.c \

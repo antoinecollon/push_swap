@@ -6,13 +6,13 @@
 /*   By: acollon <acollon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 11:46:42 by acollon           #+#    #+#             */
-/*   Updated: 2025/05/09 16:33:56 by acollon          ###   ########.fr       */
+/*   Updated: 2025/07/16 18:13:44 by acollon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void stack_swap(t_stack **stack, char pile)
+void	stack_swap(t_stack **stack, char pile, int mode)
 {
 	t_stack	*first;
 	t_stack	*second;
@@ -24,15 +24,18 @@ void stack_swap(t_stack **stack, char pile)
 	first->next = second->next;
 	second->next = first;
 	*stack = second;
-	if (pile == 'a')
-		write(1, "sa\n", 3);
-	if (pile == 'b')
-		write(1, "sb\n", 3);
+	if (mode == RETURN)
+	{
+		if (pile == 'a')
+			write(1, "sa\n", 3);
+		if (pile == 'b')
+			write(1, "sb\n", 3);
+	}
 }
 
-void stack_push(t_stack **dest, t_stack **src, char to)
+void	stack_push(t_stack **dest, t_stack **src, char to, int mode)
 {
-    t_stack *tmp;
+	t_stack	*tmp;
 
 	if (!dest || !src)
 		return ;
@@ -40,15 +43,18 @@ void stack_push(t_stack **dest, t_stack **src, char to)
 	*src = (*src)->next;
 	tmp->next = *dest;
 	*dest = tmp;
-	if (to == 'a')
-		write (1, "pa\n", 3);
-	if (to == 'b')
-		write (1, "pb\n", 3);	
+	if (mode == RETURN)
+	{
+		if (to == 'a')
+			write (1, "pa\n", 3);
+		if (to == 'b')
+			write (1, "pb\n", 3);
+	}
 }
 
-void stack_rotate(t_stack **stack, char pile)
+void	stack_rotate(t_stack **stack, char pile, int mode)
 {
-    t_stack	*tmp;
+	t_stack	*tmp;
 	t_stack	*head;
 
 	if (!stack || !*stack || !(*stack)->next)
@@ -60,17 +66,20 @@ void stack_rotate(t_stack **stack, char pile)
 		tmp = tmp->next;
 	tmp->next = head;
 	head->next = NULL;
-	if (pile == 'a')
-		write (1, "ra\n", 3);
-	if (pile == 'b')
-		write (1, "rb\n", 3);
+	if (mode == RETURN)
+	{
+		if (pile == 'a')
+			write (1, "ra\n", 3);
+		if (pile == 'b')
+			write (1, "rb\n", 3);
+	}
 }
 
-void stack_reverse_rotate(t_stack **stack, char pile)
+void	stack_reverse_rotate(t_stack **stack, char pile, int mode)
 {
-    t_stack	*tmp;
-	t_stack *last;
-	
+	t_stack	*tmp;
+	t_stack	*last;
+
 	tmp = *stack;
 	if (!stack || !*stack || !(*stack)->next)
 		return ;
@@ -80,13 +89,25 @@ void stack_reverse_rotate(t_stack **stack, char pile)
 	tmp->next = NULL;
 	last->next = *stack;
 	*stack = last;
-	if (pile == 'a')
-		write(1, "rra\n", 4);
-	if (pile == 'b')
-		write(1, "rrb\n", 4);	
+	if (mode == RETURN)
+	{
+		if (pile == 'a')
+			write(1, "rra\n", 4);
+		if (pile == 'b')
+			write(1, "rrb\n", 4);
+	}
 }
-void	push_all_to_a(t_stack **a, t_stack **b)
+
+void	push_all_to_a(t_stack **a, t_stack **b, int mode)
 {
-	while (*b)
-		stack_push(a, b, 'a');
+	if (mode == RETURN)
+	{
+		while (*b)
+			stack_push(a, b, 'a', RETURN);
+	}
+	else
+	{
+		while (*b)
+			stack_push(a, b, 'a', SILENT);
+	}
 }

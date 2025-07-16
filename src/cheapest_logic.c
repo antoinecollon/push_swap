@@ -6,7 +6,7 @@
 /*   By: acollon <acollon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/09 16:33:03 by acollon           #+#    #+#             */
-/*   Updated: 2025/05/09 17:03:48 by acollon          ###   ########.fr       */
+/*   Updated: 2025/07/16 18:10:04 by acollon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,15 @@ static	int	ft_abs(int n)
 {
 	if (n < 0)
 		return (-n);
-	return (n);	
+	return (n);
 }
+
 void	compute_ops_required(t_stack *a, t_stack *b)
 {
-	t_stack *current;
+	t_stack	*current;
 	int		size_a;
 	int		size_b;
-	
+
 	size_a = stack_size(a);
 	size_b = stack_size(b);
 	current = b;
@@ -45,8 +46,8 @@ t_stack	*find_cheapest_node(t_stack *b)
 {
 	t_stack	*current;
 	t_stack	*cheapest;
-	int	cheapest_cost;
-	int	total_cost;
+	int		cheapest_cost;
+	int		total_cost;
 
 	current = b;
 	cheapest = NULL;
@@ -63,26 +64,27 @@ t_stack	*find_cheapest_node(t_stack *b)
 	}
 	return (cheapest);
 }
+
 void	execute_simple_move(t_stack **a, t_stack **b, int cost_a, int cost_b)
 {
 	while (cost_a > 0)
 	{
-		stack_rotate(a, 'a');
+		stack_rotate(a, 'a', RETURN);
 		cost_a--;
 	}
 	while (cost_a < 0)
 	{
-		stack_reverse_rotate(a, 'a');
+		stack_reverse_rotate(a, 'a', RETURN);
 		cost_a++;
 	}
 	while (cost_b > 0)
 	{
-		stack_rotate(b, 'b');
+		stack_rotate(b, 'b', RETURN);
 		cost_b--;
 	}
 	while (cost_b < 0)
 	{
-		stack_reverse_rotate(b, 'b');
+		stack_reverse_rotate(b, 'b', RETURN);
 		cost_b++;
 	}
 }
@@ -98,17 +100,16 @@ void	execute_cheapest_move(t_stack **a, t_stack **b)
 	cost_b = target->cost_b;
 	while (cost_a > 0 && cost_b > 0)
 	{
-		double_rotate(a, b);
+		double_rotate(a, b, RETURN);
 		cost_a--;
 		cost_b--;
 	}
 	while (cost_a < 0 && cost_b < 0)
 	{
-		double_reverse_rotate(a, b);
+		double_reverse_rotate(a, b, RETURN);
 		cost_a++;
 		cost_b++;
 	}
 	execute_simple_move(a, b, cost_a, cost_b);
-	stack_push(a, b, 'a');
+	stack_push(a, b, 'a', RETURN);
 }
-

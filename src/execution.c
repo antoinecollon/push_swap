@@ -6,7 +6,7 @@
 /*   By: acollon <acollon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/09 16:46:06 by acollon           #+#    #+#             */
-/*   Updated: 2025/07/15 12:04:59 by acollon          ###   ########.fr       */
+/*   Updated: 2025/07/16 18:18:14 by acollon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 static int	get_min_pos(t_stack *a)
 {
-	t_stack *current;
-	
+	t_stack	*current;
+
 	find_pos(a);
 	current = a;
 	while (current)
@@ -40,14 +40,14 @@ void	rotate_stack_to_min_top(t_stack **a)
 		i = min_pos;
 		while (i--)
 		{
-			stack_rotate(a, 'a');
+			stack_rotate(a, 'a', RETURN);
 		}
 	}
 	else
 	{
 		i = size - min_pos;
 		while (i--)
-			stack_reverse_rotate(a, 'a');		
+			stack_reverse_rotate(a, 'a', RETURN);
 	}
 }
 
@@ -62,17 +62,17 @@ void	push_to_b(t_stack **a, t_stack **b)
 	{
 		if ((*a)->index <= i)
 		{
-			stack_push(b, a, 'b');
+			stack_push(b, a, 'b', RETURN);
 			i++;
 		}
 		else if ((*a)->index <= i + chunk_size)
 		{
-			stack_push(b, a, 'b');
-			stack_rotate(b, 'b');
+			stack_push(b, a, 'b', RETURN);
+			stack_rotate(b, 'b', RETURN);
 			i++;
 		}
 		else
-			stack_rotate(a, 'a');
+			stack_rotate(a, 'a', RETURN);
 	}
 }
 
@@ -92,8 +92,8 @@ void	sort_big(t_stack **a, t_stack **b)
 
 int	main(int ac, char **av)
 {
-	t_stack *a;
-	t_stack *b;
+	t_stack	*a;
+	t_stack	*b;
 
 	if (ac < 2)
 		return (0);
@@ -115,5 +115,6 @@ int	main(int ac, char **av)
 	else
 		sort_big(&a, &b);
 	rotate_stack_to_min_top(&a);
-	return (0);	
+	free_all(&a, &b);
+	return (0);
 }

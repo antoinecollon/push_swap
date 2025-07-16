@@ -6,7 +6,7 @@
 /*   By: acollon <acollon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/28 13:48:25 by acollon           #+#    #+#             */
-/*   Updated: 2025/04/28 14:46:44 by acollon          ###   ########.fr       */
+/*   Updated: 2025/07/15 22:51:49 by acollon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	is_valid_number(const char *str)
 
 int	has_duplicates(t_stack *stack)
 {
-    t_stack *nb;
+	t_stack	*nb;
 	t_stack	*check;
 
 	nb = stack;
@@ -54,7 +54,7 @@ int	has_duplicates(t_stack *stack)
 
 void	free_stack(t_stack **stack)
 {
-    t_stack *tmp;
+	t_stack	*tmp;
 
 	if (!stack || !*stack)
 		return ;
